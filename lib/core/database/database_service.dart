@@ -25,7 +25,7 @@ class DatabaseService {
   }
 
   Future<void> _createDb(Database db, int version) async {
-    // Create Products table
+
     await db.execute('''
       CREATE TABLE products(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -37,7 +37,7 @@ class DatabaseService {
       )
     ''');
 
-    // Create Stock table
+
     await db.execute('''
       CREATE TABLE stock(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -49,7 +49,7 @@ class DatabaseService {
       )
     ''');
 
-    // Create StockHistory table
+
     await db.execute('''
       CREATE TABLE stock_history(
         id INTEGER PRIMARY KEY AUTOINCREMENT,

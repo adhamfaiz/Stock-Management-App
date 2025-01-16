@@ -270,6 +270,7 @@ class ProductListItem extends ConsumerWidget {
                           TextButton(
                             onPressed: () async {
                               await ref.read(productNotifierProvider.notifier).deleteProduct(product.id!);
+                              // ignore: use_build_context_synchronously
                               Navigator.pop(context);
                             },
                             child: const Text('Delete'),

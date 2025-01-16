@@ -30,11 +30,11 @@ class ProductRepository {
     final db = await _databaseService.database;
     
     Product createdProduct = await db.transaction((txn) async {
-      // Insert product
+
       final id = await txn.insert('products', product.toMap());
       final newProduct = product.copyWith(id: id);
       
-      // Always create a stock record
+
       final stockToCreate = initialStock?.copyWith(productId: id) ?? 
         Stock(
           productId: id,

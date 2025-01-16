@@ -72,7 +72,7 @@ class StockRepository {
 
     final db = await _databaseService.database;
     await db.transaction((txn) async {
-      // Get current stock
+
       final List<Map<String, dynamic>> stockMaps = await txn.query(
         'stock',
         where: 'product_id = ?',
@@ -85,17 +85,14 @@ class StockRepository {
       
       final currentStock = Stock.fromMap(stockMaps.first);
       
-      // Calculate new quantity
       final newQuantity = type == StockMovementType.in_
           ? currentStock.quantity + quantity
           : currentStock.quantity - quantity;
       
-      // Validate new quantity
       if (newQuantity < 0) {
         throw Exception('Cannot reduce stock below 0. Current stock: ${currentStock.quantity}');
       }
       
-      // Update stock quantity
       final updateCount = await txn.update(
         'stock',
         {
@@ -112,7 +109,6 @@ class StockRepository {
         throw Exception('Failed to update stock for product $productId');
       }
 
-      // Add history record
       final history = StockHistory(
         productId: productId,
         quantityChanged: quantity,

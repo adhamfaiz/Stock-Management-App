@@ -47,7 +47,6 @@ class _StockAdjustmentDialogState extends ConsumerState<StockAdjustmentDialog> {
       return;
     }
 
-    // Additional validation for OUT movements
     if (_type == StockMovementType.out && quantity > widget.currentStock.quantity) {
       _showError('Cannot remove more than current stock (${widget.currentStock.quantity})');
       return;

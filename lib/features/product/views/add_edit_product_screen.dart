@@ -61,9 +61,9 @@ class _AddEditProductScreenState extends ConsumerState<AddEditProductScreen> {
       );
 
       if (widget.product == null) {
-        // Create new product
+
         final stock = Stock(
-          productId: 0, // Will be set in repository
+          productId: 0, 
           quantity: int.parse(_initialStockController.text),
           minStockLevel: int.parse(_minStockLevelController.text),
           lastRestockDate: DateTime.parse('2025-01-14T18:04:09+03:00'),
@@ -71,7 +71,7 @@ class _AddEditProductScreenState extends ConsumerState<AddEditProductScreen> {
 
         await ref.read(productNotifierProvider.notifier).addProduct(product, stock);
       } else {
-        // Update existing product
+
         await ref.read(productNotifierProvider.notifier).updateProduct(product);
       }
 

@@ -26,7 +26,6 @@ class ProductNotifier extends _$ProductNotifier {
     try {
       await _repository.createProduct(product, initialStock: stock);
 
-      // Notify stock provider to refresh
       await ref.read(stockNotifierProvider.notifier).refreshStock();
 
       final products = await _fetchProducts();
