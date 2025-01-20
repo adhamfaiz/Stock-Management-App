@@ -182,6 +182,8 @@ class ProductListItem extends ConsumerWidget {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text('Description: ${product.description}'),
+            const SizedBox(height: 4),
             Text('Price: \$${product.price.toStringAsFixed(2)}'),
             const SizedBox(height: 4),
             Row(
@@ -273,7 +275,13 @@ class ProductListItem extends ConsumerWidget {
                               // ignore: use_build_context_synchronously
                               Navigator.pop(context);
                             },
-                            child: const Text('Delete'),
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.red,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            child: const Text('Delete')
                           ),
                         ],
                       ),
